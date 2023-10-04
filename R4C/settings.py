@@ -86,3 +86,5 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 SERIAL_CODES_FILE_PATH = os.path.join(os.path.join(BASE_DIR, 'service files'), 'serial_codes.txt')
+
+WEEKLY_PRODUCTION_REPORTS = os.path.join(os.path.join(BASE_DIR, 'production reports'))
