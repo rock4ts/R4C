@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 
 from robots.forms import RobotForm
+from services.orders.notification import notify_customers_about_new_robot
 from services.request import deserialize_request_body
 from services.robots.registration import RobotRegistrationCommand
 from services.robots.report import create_weekly_report
@@ -19,6 +20,8 @@ def add_robot(request: HttpRequest) -> JsonResponse:
     if not robot_registration_command.is_configured():
         return JsonResponse(robot_registration_command.errors)
     new_robot = robot_registration_command.execute()
+    notify_customers_about_new_robot(model=new_robot.get('model'),
+                                     version=new_robot.get('version'))
     return JsonResponse(new_robot)
 
 

@@ -88,3 +88,7 @@ STATIC_URL = '/static/'
 SERIAL_CODES_FILE_PATH = os.path.join(os.path.join(BASE_DIR, 'service files'), 'serial_codes.txt')
 
 WEEKLY_PRODUCTION_REPORTS = os.path.join(os.path.join(BASE_DIR, 'production reports'))
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+ADMIN_EMAIL = 'rock4ts@gmail.com'
