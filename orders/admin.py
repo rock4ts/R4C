@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Order
+
+
+@admin.register(Order)
+class RobotAdmin(admin.ModelAdmin):
+    list_display = ('model', 'version', 'customer')
